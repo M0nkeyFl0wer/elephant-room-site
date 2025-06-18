@@ -1,11 +1,11 @@
-# Base Ghost image
 FROM ghost:5-alpine
 
-# Copy your content folder (themes, images, routes, uploads, etc.)
+# Copy your theme, routes, and content folders
 COPY ./content /var/lib/ghost/content
-
-# Optional: Include custom routing
 COPY ./routes.yaml /var/lib/ghost/content/settings/routes.yaml
 
-# Expose the port used by Ghost
+# Force Ghost to use SQLite
+ENV database__client=sqlite3
+ENV database__connection__filename=/var/lib/ghost/content/data/ghost.db
+
 EXPOSE 2368
