@@ -1,3 +1,4 @@
 content/logs/
 db.env
 config.production.json
+.env
