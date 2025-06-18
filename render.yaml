@@ -1,6 +1,0 @@
-services:
-  - type: docker
-    name: elephant-room-site
-    env: docker
-    dockerComposeFilePath: docker-compose.yml
-    autoDeploy: true
