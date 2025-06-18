@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: elephant-room-site
+    env: docker
+    plan: starter
+    repo: https://github.com/M0nkeyFl0wer/elephant-room-site
+    region: oregon
+    branch: main
+    dockerfilePath: ./docker-compose.yml
+    healthCheckPath: /
