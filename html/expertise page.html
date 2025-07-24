@@ -91,16 +91,27 @@
           padding: 2rem 1.5rem 4rem;
         }
         
-        .exp-card {
-          background: #fff;
-          border: 1px solid #f0e6f3;
-          border-radius: 1.25rem;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-          margin-bottom: 2rem;
-          overflow: hidden;
-          padding: 2rem;
-          transition: all 0.3s ease;
-          position: relative;
+        .exp-card, details.exp-card {
+          background: #fff0f5 !important;
+          border: 1px solid #ffd1e6 !important;
+          border-radius: 1.25rem !important;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+          margin-bottom: 2rem !important;
+          overflow: hidden !important;
+          padding: 2rem !important;
+          transition: all 0.3s ease !important;
+          position: relative !important;
+        }
+        .exp-card img, details.exp-card img {
+          width: 100% !important;
+          max-height: none !important;
+          object-fit: cover !important;
+          border-radius: 1rem !important;
+          margin-bottom: 1rem !important;
+        }
+        .exp-card p, details.exp-card p {
+          background: #fff0f5 !important;
+          padding: 1rem !important;
         }
         .exp-card::before {
           content: '';
