@@ -104,6 +104,7 @@
 }
 .exp-card {
   background: #fff0f5;
+  border: 1px solid #ffd1e6;
   border-radius: 1.25rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
@@ -111,7 +112,7 @@
   padding: 2rem;
   transition: all 0.3s ease;
 }
-.exp-card summary {
+.exp-card summary, details.exp-card summary {
   font-size: 1.6rem;
   font-weight: bold;
   color: #a30069;
@@ -121,8 +122,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: #fff0f5;
+  padding: 1rem;
+  border-radius: 1rem;
 }
-.exp-card[open] summary {
+.exp-card[open] summary, details.exp-card[open] summary {
   margin-bottom: 1rem;
 }
 .exp-card img {
