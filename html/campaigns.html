@@ -102,7 +102,10 @@
   margin: 0 auto;
   padding: 2rem 1.5rem 4rem;
 }
-.exp-card, details.exp-card {
+.exp-card,
+.exp-card details,
+details.exp-card,
+details .exp-card {
   background: #fff0f5 !important;
   border: 1px solid #ffd1e6 !important;
   border-radius: 1.25rem !important;
@@ -112,15 +115,33 @@
   padding: 2rem !important;
   transition: all 0.3s ease !important;
 }
-.exp-card img, details.exp-card img {
+
+.exp-card img,
+.exp-card details img,
+details.exp-card img,
+details .exp-card img {
   width: 100% !important;
   max-height: none !important;
   object-fit: cover !important;
   border-radius: 1rem !important;
   margin-bottom: 1rem !important;
 }
-.exp-card p, details.exp-card p {
+
+.exp-card p,
+.exp-card details p,
+details.exp-card p,
+details .exp-card p {
   background: #fff0f5 !important;
+  padding: 1rem !important;
+  color: #333 !important;
+}
+
+.exp-card summary,
+.exp-card details summary,
+details.exp-card summary,
+details .exp-card summary {
+  background: #fff0f5 !important;
+  border-radius: 1rem !important;
   padding: 1rem !important;
 }
 .exp-card summary, details.exp-card summary {
