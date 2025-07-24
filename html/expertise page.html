@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Expertise - Elephant Room</title>
+    <style>
+        /* Full-bleed Wrapper Styles */
+        .full-bleed-wrapper {
+          display: none; /* Hide the hero section */
+        }
+        
+        .group-photo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .group-photo {
+            max-width: 800px;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Entire existing CSS from the original file */
+        .sub-hero {
+          background: linear-gradient(to right, #fce5ff, #ffd0e6);
+          padding: 5rem 1rem 4rem;
+          text-align: center;
+        }
+        
+        .sub-hero .hero-heading {
+          font-size: 3.5rem;
+          font-weight: 900;
+          color: #a30069;
+          text-transform: uppercase;
+          margin-bottom: 1.5rem;
+        }
+        
+        .sub-hero .hero-blurb {
+          font-size: 1.5rem;
+          font-weight: 400;
+          line-height: 1.8;
+          max-width: 900px;
+          margin: 0 auto;
+          color: #333;
+        }
+        
+        .sub-hero .highlight {
+          background-color: #ffd1e6;
+          color: #a30069;
+          font-weight: 600;
+          padding: 0.2rem 0.4rem;
+          border-radius: 0.25rem;
+        }
+
+        /* Hero section styles */
+        .hero-section {
+          background: linear-gradient(to right, #fce5ff, #ffd0e6);
+          padding: 3rem 1.5rem;
+          text-align: center;
+          border-radius: 1rem;
+          margin-bottom: 2rem;
+        }
+        
+        .hero-section h2 {
+          font-size: 3.2rem;
+          color: #a30069;
+          margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+          font-size: 1.65rem;
+          color: #5a5a5a;
+          max-width: 800px;
+          margin: 0 auto;
+          line-height: 1.9;
+        }
+        
+        .hero-section .highlight {
+          font-weight: bold;
+          background: #ffd1e6;
+          color: #a30069;
+          padding: 0.2rem 0.4rem;
+          border-radius: 0.25rem;
+        }
+
+        /* Expertise section styles */
+        .expertise-section {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 2rem 1.5rem 4rem;
+        }
+        
+        .exp-card {
+          background: #fff;
+          border: 1px solid #f0e6f3;
+          border-radius: 1.25rem;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+          margin-bottom: 2rem;
+          overflow: hidden;
+          padding: 2rem;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+        .exp-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background: linear-gradient(to right, #a30069, #5e2c7f);
+        }
+        
+        .exp-card summary {
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: #a30069;
+          cursor: pointer;
+          margin-bottom: 1rem;
+          outline: none;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .exp-card[open] summary {
+          margin-bottom: 1rem;
+        }
+        
+        .exp-card img {
+          display: block;
+          margin: 1rem auto;
+          max-width: 100%;
+          max-height: 250px;
+          object-fit: contain;
+          background: #fff;
+          border-radius: 0.75rem;
+          padding: 1rem;
+          box-sizing: border-box;
+        }
+        
+        .exp-card p {
+          font-size: 1.35rem;
+          line-height: 1.9;
+          color: #333;
+          padding: 0.5rem 0 0;
+        }
+        
+        .icon {
+          font-size: 1.4rem;
+        }
+
+        /* Bio section styles */
+        .bio-section {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 4rem 1.5rem;
+          background: linear-gradient(to right, #f5e1ff, #ffeaf5);
+        }
+        
+        .bio-content {
+          text-align: center;
+        }
+        
+        .bio-heading {
+          font-size: 3rem;
+          color: #a30069;
+          margin-bottom: 1rem;
+        }
+        
+        .bio-intro, .bio-description, .bio-motto {
+          font-size: 1.5rem;
+          line-height: 1.8;
+          color: #333;
+          max-width: 800px;
+          margin: 1rem auto;
+        }
+        
+        .individual-bios {
+          display: flex;
+          justify-content: space-between;
+          gap: 2rem;
+          margin: 3rem 0;
+        }
+        
+        .bio-card {
+          flex: 1;
+          background: #fff;
+          border-radius: 1rem;
+          padding: 2rem;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        
+        .bio-image {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 50%;
+          margin-bottom: 1rem;
+        }
+        
+        .bio-quote {
+          font-size: 1.3rem;
+          font-style: italic;
+          margin-bottom: 1rem;
+          max-width: 100%;
+        }
+        
+        .bio-quote-attribution {
+          font-weight: bold;
+          color: #666;
+          margin-top: 0.5rem;
+        }
+        
+        .bio-name {
+          font-size: 1.8rem;
+          color: #a30069;
+          margin-bottom: 0.5rem;
+        }
+        
+        .bio-text {
+          font-size: 1.3rem;
+          line-height: 1.8;
+          color: #333;
+        }
+
+        /* What we do section styles */
+        .what-we-do {
+          background: #ffd1e6;
+          border-radius: 1rem;
+          padding: 2rem;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+        
+        .what-we-do-heading {
+          font-size: 2rem;
+          color: #a30069;
+          margin-bottom: 1rem;
+        }
+        
+        .what-we-do-intro, .what-we-do-outro {
+          font-size: 1.4rem;
+          color: #333;
+        }
+        
+        .what-we-do-list {
+          list-style-type: none;
+          padding: 0;
+          margin: 1rem 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+        
+        .what-we-do-list li {
+          background: #fff;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          font-size: 1.2rem;
+          color: #a30069;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <!-- Add Navigation Spacer -->
+    <div class="nav-spacer"></div>
+<!-- Tarah and Ben Bio Section -->
+<section class="bio-section">
+  <div class="bio-content">
+    <div class="group-photo-container">
+      <img src="group-photo.jpg" alt="Tarah and Ben Together" class="group-photo">
+    </div>
+
+    <h2 class="bio-heading">We're Tarah and Ben</h2>
+    <p class="bio-intro">Old friends. Longtime collaborators. Seasoned Campaigners.</p>
+    
+    <p class="bio-description">We've spent the last 20 years organizing campaigns, building tools, running strategy, and supporting communities. Elephant Room is how we keep doing that—with people we trust, on projects that matter.</p>
+    
+    <p class="bio-motto">We're not consultants in blazers. We're hands-on, heart-forward, and here to help you figure it out.</p>
+    
+    <div class="individual-bios">
+      <div class="bio-card">
+        <img src="tarah-individual.jpg" alt="Tarah" class="bio-image">
+        <p class="bio-quote">"Tarah is a builder. Of campaigns, orgs, stories, and systems. She's creative, sharp, and wildly effective—whether she's leading a strategy session or counting buildings to fill a data gap. She makes things work. And makes them make sense."</p>
+        <p class="bio-quote-attribution">– Ben</p>
+      </div>
+      
+      <div class="bio-card">
+        <img src="content/images/2025/07/ben-individual.jpg" alt="Ben" class="bio-image">
+        <p class="bio-quote">"Ben brings focus to chaos. He's worked across policy, tech, climate, and Indigenous governance, always with care and clarity. He doesn't posture. He just gets the work done and makes it easier for others to do the same."</p>
+        <p class="bio-quote-attribution">– Tarah</p>
+      </div>
+    </div>
+    
+    <div class="what-we-do">
+      <h3 class="what-we-do-heading">What We Do</h3>
+      <p class="what-we-do-intro">We help good people do hard things. That usually means:</p>
+      <ul class="what-we-do-list">
+        <li>Running campaigns</li>
+        <li>Clarifying strategy</li>
+        <li>Making research usable</li>
+        <li>Supporting public engagement</li>
+        <li>Writing the words that make it all land</li>
+      </ul>
+      <p class="what-we-do-outro">We work small, move fast, and show up when it counts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stacked Drop-down Cards -->
+<section class="expertise-section">
+  <details class="exp-card" open>
+    <summary><span class="icon">🔍</span> Strategic Messaging</summary>
+    <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/E---1-Tuna.png" alt="Strategic Messaging">
+    <p>We craft clear, powerful messages and shape them into stories that stick, turning complex ideas into compelling narratives while making sure that the right message reaches the right audience at the right time.
+
+    To be clear we are trying to make change, not just give you advice.
+
+    <br><br>We develop the messaging frameworks that maintain credibility under pressure and advance priorities through shifting landscapes.
+
+    <br><br><strong>Examples:</strong><br>
+    - Reframed an environmental issue as a public health emergency via media & grassroots storytelling<br>
+    - Partnered with studios to weave climate solutions into popular film narratives<br>
+    - Shifted public opinion on pipeline projects through multi-pronged messaging<br>
+    - Delivered narrative strategy for landmark Indigenous-led environmental challenge<br>
+    - Protected Burns Bog via coordinated public pressure campaigns</p>
+  </details>
+
+  <details class="exp-card">
+    <summary><span class="icon">🚨</span> Crisis Management</summary>
+    <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-2.jpg" alt="Crisis Management">
+    <p>We weaponize research and engineer counter-narratives that don't just deflect: they destroy. Our full-spectrum approach to existential risks combines rapid crisis containment with hard-hitting research to outmaneuver adversaries and keep them on defense.
+
+    <br><br><strong>Examples:</strong><br>
+    - Helped tech clients navigate viral crises<br>
+    - Coordinated progressive rapid-response teams<br>
+    - Turned a far-right leadership race into a climate accountability moment<br>
+    - Designed counter-disinfo ops during elections with civil society allies</p>
+  </details>
+
+  <details class="exp-card">
+    <summary><span class="icon">💡</span> Tech for Good</summary>
+    <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-3.png" alt="Tech for Good">
+    <p>The right tools in the right hands at the right time can change everything. We build, source, or adapt the tech that campaigns actually need.
+
+    <br><br><strong>Examples:</strong><br>
+    - Open-source tanker tracking system for activist journalism<br>
+    - Peer-to-peer crowdfunding for climate action<br>
+    - OSINT workflows and counter-narratives<br>
+    - Delivered Ethereum Foundation a full strategic roadmap of Web3 x climate intersections</p>
+  </details>
+
+  <details class="exp-card">
+    <summary><span class="icon">🌿</span> Indigenous Partnership</summary>
+    <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-4.png" alt="Indigenous Collaboration">
+    <p>Supporting Indigenous rights is not only strategic — it's essential. We have been honoured to work alongside First Nations to advance sovereignty, clean energy, and self-determination.
+
+    <br><br><strong>Examples:</strong><br>
+    - Facilitated Tsleil-Waututh Nation's Sacred Trust initiative<br>
+    - Supported energy transition planning with Heiltsuk and ICE<br>
+    - Produced media and advocacy across dozens of Indigenous-led campaigns</p>
+  </details>
+
+  <details class="exp-card">
+    <summary><span class="icon">🏋️</span> Training & Organizing</summary>
+    <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-5.png" alt="Training & Organizing">
+    <p>Our trainings sharpen skills, our speeches ignite action, and our organizing strategies turn bystanders into unstoppable forces.
+
+    <br><br><strong>Examples:</strong><br>
+    - Keynotes and workshops at universities and civic summits<br>
+    - Emergency prep for the City of Jasper (later hit by wildfire)<br>
+    - Curriculum design for frontline climate organizing programs</p>
+  </details>
+</section>
+</body>
+</html>
