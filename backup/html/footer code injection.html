@@ -1,0 +1,209 @@
+<style>
+  /* ✅ Modern Typography */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  body,
+  .gh-content,
+  article {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+  }
+
+  /* ✅ Global Accessibility Color Contrast */
+  .exp-card {
+    background: #f6e6f3 !important;  /* Improved pink background */
+  }
+  .exp-card summary {
+    color: #5e2c7f !important;  /* Deeper purple for better readability */
+    background: transparent !important;  /* Remove any purple background */
+    padding: 1rem 0 !important;  /* Clean padding */
+  }
+  .exp-card p {
+    color: #222 !important;  /* Darker text for improved contrast */
+  }
+
+  /* ✅ Fix collapsed dropdown summary backgrounds */
+  details summary {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  details:not([open]) summary {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* ✅ Universal Navigation Spacer */
+  .nav-spacer {
+    height: 80px;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ✅ Hide Ghost default h1 injection */
+  .gh-page-head h1,
+  .gh-content > h1:first-of-type:not(.hero-heading),
+  main h1:first-of-type:not(.hero-heading),
+  article.gh-content h1:first-of-type:not(.hero-heading) {
+    display: none !important;
+  }
+
+  /* ✅ Global type settings */
+  body,
+  .gh-content,
+  .gh-content p,
+  .gh-content li,
+  .gh-content summary,
+  article p,
+  article li {
+    font-size: 18px !important;
+    line-height: 1.8 !important;
+  }
+
+  h2, .gh-content h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.75rem;
+  }
+
+  h3, .gh-content h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  details summary {
+    font-size: 1.25rem !important;
+    font-weight: 600;
+  }
+
+  /* ✅ Hero header formatting */
+  .hero-heading {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #a30069;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  /* ✅ Hero wrapper */
+  .full-bleed-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: -3rem;
+  }
+
+  /* ✅ Section header */
+  .section-header-blurb {
+    background: #f6f0fb;
+    padding: 1.75rem 1.5rem;
+    border-radius: 1.25rem;
+    margin: 0 auto 2rem auto;
+    max-width: 850px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    text-align: center;
+  }
+
+  .section-header-blurb p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #5e2c7f;
+    margin: 0;
+  }
+
+  /* ✅ Nav menu fix */
+  .site-nav a {
+    color: #a30069 !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+.site-header {
+  background: white;
+  z-index: 9999;
+  position: relative;
+}
+
+  .site-nav a:hover {
+    color: #5e2c7f !important;
+  }
+
+  /* ✅ Replace 'Home' with logo */
+  .site-nav a[href="/"] {
+    font-size: 0 !important;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-nav a[href="/"]::before {
+    content: url("http://localhost:2368/content/images/2025/06/elphant-in-the-logo.jpg");
+    display: inline-block;
+    width: 38px;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+
+  /* Ensure full-width spacer */
+  body {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+</style>
+
+<script>
+// Global Image Fallback Handler
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to handle image errors
+  function handleImageError(img) {
+    // Only try fallback once to prevent infinite loops
+    if (img.dataset.fallbackAttempted) return;
+    
+    img.dataset.fallbackAttempted = 'true';
+    img.src = 'https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png';
+    img.alt = 'Elephant Room Logo';
+  }
+
+  // Add error handlers to all existing images
+  const images = document.querySelectorAll('img');
+  images.forEach(function(img) {
+    img.addEventListener('error', function() {
+      handleImageError(this);
+    });
+  });
+
+  // Handle dynamically added images
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1) { // Element node
+          if (node.tagName === 'IMG') {
+            node.addEventListener('error', function() {
+              handleImageError(this);
+            });
+          }
+          // Check for images within added elements
+          const nestedImages = node.querySelectorAll && node.querySelectorAll('img');
+          if (nestedImages) {
+            nestedImages.forEach(function(img) {
+              img.addEventListener('error', function() {
+                handleImageError(this);
+              });
+            });
+          }
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>

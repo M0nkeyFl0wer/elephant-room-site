@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Expertise - Elephant Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Spacer */
+        .nav-spacer {
+            height: 80px;
+        }
+
+        /* Full-bleed wrapper */
+        .full-bleed-wrapper {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        /* Subpage Hero Styles */
+        .sub-hero {
+            background: linear-gradient(to right, #fdf1ff, #ffe9f2);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+        }
+        
+        .sub-hero .hero-heading {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sub-hero .hero-blurb {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            color: #333;
+        }
+        
+        .sub-hero .highlight {
+            font-weight: 600;
+            color: #a30069;
+        }
+
+        /* Expertise section styles */
+        .expertise-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        .exp-card {
+            background: linear-gradient(to bottom right, #fdf1ff, #ffe9f2);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #a30069, #d6336c);
+        }
+
+        .exp-card img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .exp-card p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .exp-card strong {
+            color: #a30069;
+            font-weight: 600;
+        }
+        
+        .exp-card summary {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #a30069;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+        }
+
+        .exp-card summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .exp-card[open] summary {
+            margin-bottom: 1.5rem;
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Bio section wrapper */
+        .bio-section-wrapper {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            background: linear-gradient(to right, #fdf1ff, #ffe9f2);
+            padding: 4rem 0;
+            margin-top: 0;
+        }
+
+        /* Bio section styles */
+        .bio-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 0;
+        }
+        
+        .bio-content {
+            text-align: center;
+        }
+
+        .group-photo-container {
+            margin-bottom: 2rem;
+        }
+
+        .group-photo {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .bio-heading {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #a30069;
+            margin-bottom: 1rem;
+        }
+        
+        .bio-intro {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .bio-description, .bio-motto {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .bio-motto {
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: #a30069;
+            margin: 3rem 0 2rem;
+            font-weight: 700;
+        }
+        
+        .individual-bios {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            flex-wrap: nowrap;
+        }
+        
+        .bio-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .bio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .bio-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 5px solid #ffe9f2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bio-quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .bio-quote-attribution {
+            font-weight: 700;
+            color: #a30069;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        /* What we do section styles */
+        .what-we-do {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 3rem auto 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 2px solid #ffe9f2;
+        }
+        
+        .what-we-do-heading {
+            font-size: 2rem;
+            color: #a30069;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .what-we-do-intro, .what-we-do-outro {
+            font-size: 1.125rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .what-we-do-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .what-we-do-list li {
+            background: linear-gradient(to right, #fdf1ff, #ffe9f2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #a30069;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .what-we-do-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CTA Footer */
+        .cta-footer {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            padding: 0 1.5rem 2rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(to right, #f7d2ff, #fff1f0);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .cta-box p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: white;
+            color: #a30069;
+            border: 2px solid #a30069;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #fff0f5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sub-hero .hero-heading {
+                font-size: 2.5rem;
+            }
+            
+            .sub-hero .hero-blurb {
+                font-size: 1.25rem;
+            }
+            
+            .bio-heading {
+                font-size: 2.5rem;
+            }
+            
+            .individual-bios {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .bio-card {
+                max-width: 100%;
+            }
+            
+            .what-we-do {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Spacer -->
+    <div class="nav-spacer"></div>
+    
+    <!-- Full-bleed Subpage Hero Section -->
+    <div class="full-bleed-wrapper">
+      <section class="sub-hero">
+        <h1 class="hero-heading">OUR EXPERTISE</h1>
+        <p class="hero-blurb">
+          We blend <span class="highlight">strategic communications</span>, grassroots <span class="highlight">mobilization</span>, and cutting-edge <span class="highlight">technology</span> to make the impossible inevitable.
+        </p>
+        <p class="hero-blurb">
+          Here's how we help good people do hard things.
+        </p>
+      </section>
+    </div>
+
+    <!-- Tarah and Ben Bio Section -->
+    <section class="bio-section">
+      <div class="bio-content">
+        <div class="group-photo-container">
+          <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/master/content/images/2025/00100sPORTRAIT_00100_BURST20190320150908384_COVER.jpg" alt="Tarah and Ben Together" class="group-photo" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        </div>
+
+        <h2 class="bio-heading">We're Tarah and Ben</h2>
+        <p class="bio-intro">Old friends. Longtime collaborators. Seasoned Campaigners.</p>
+        
+        <p class="bio-description">We've spent the last 20 years organizing campaigns, building tools, running strategy, and supporting communities. Elephant Room is how we keep doing that—with people we trust, on projects that matter.</p>
+        
+        <p class="bio-motto">We're not consultants in blazers. We're hands-on, heart-forward, and here to help you figure it out.</p>
+        
+        <h3 style="font-size: 2.2rem; color: #a30069; margin: 2rem 0 1rem 0; text-align: center;">We prefer to introduce each other</h3>
+        
+        <div class="individual-bios">
+          <div class="bio-card">
+            <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/master/content/images/2025/Copy%20of%20tarah.jpg" alt="Tarah" class="bio-image" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+            <p class="bio-quote">"Tarah is a builder. Of campaigns, orgs, stories, and systems. She's creative, sharp, and wildly effective—whether she's leading a strategy session or counting buildings to fill a data gap. She makes things work. And makes them make sense."</p>
+            <p class="bio-quote-attribution">– Ben on Tarah</p>
+          </div>
+          
+          <div class="bio-card">
+            <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/master/content/images/2025/07/ben-individual.jpg" alt="Ben" class="bio-image" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+            <p class="bio-quote">"Ben brings focus to chaos. He's worked across policy, tech, climate, and Indigenous governance, always with care and clarity. He doesn't posture. He just gets the work done and makes it easier for others to do the same."</p>
+            <p class="bio-quote-attribution">– Tarah on Ben</p>
+          </div>
+        </div>
+        
+        <div class="what-we-do">
+          <h3 class="what-we-do-heading">What We Do</h3>
+          <p class="what-we-do-intro">We help good people do hard things. That usually means:</p>
+          <ul class="what-we-do-list">
+            <li>Running campaigns</li>
+            <li>Clarifying strategy</li>
+            <li>Making research usable</li>
+            <li>Supporting public engagement</li>
+            <li>Writing the words that make it all land</li>
+          </ul>
+          <p class="what-we-do-outro">We work small, move fast, and show up when it counts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Expertise Areas -->
+    <section class="expertise-section">
+      <details class="exp-card" open>
+        <summary><svg class="icon"><use xlink:href="#icon-messaging"/></svg> Strategic Messaging</summary>
+        <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/E---1-Tuna.png" alt="Strategic Messaging" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        <p>We craft clear, powerful messages and shape them into stories that stick, turning complex ideas into compelling narratives while making sure that the right message reaches the right audience at the right time.
+
+        To be clear we are trying to make change, not just give you advice.
+
+        <br><br>We develop the messaging frameworks that maintain credibility under pressure and advance priorities through shifting landscapes.
+
+        <br><br><strong>Examples:</strong><br>
+        - Reframed an environmental issue as a public health emergency via media & grassroots storytelling<br>
+        - Partnered with studios to weave climate solutions into popular film narratives<br>
+        - Shifted public opinion on pipeline projects through multi-pronged messaging<br>
+        - Delivered narrative strategy for landmark Indigenous-led environmental challenge<br>
+        - Protected Burns Bog via coordinated public pressure campaigns</p>
+      </details>
+
+      <details class="exp-card">
+        <summary><svg class="icon"><use xlink:href="#icon-crisis"/></svg> Crisis Management</summary>
+        <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-2.jpg" alt="Crisis Management" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        <p>We weaponize research and engineer counter-narratives that don't just deflect: they destroy. Our full-spectrum approach to existential risks combines rapid crisis containment with hard-hitting research to outmaneuver adversaries and keep them on defense.
+
+        <br><br><strong>Examples:</strong><br>
+        - Helped tech clients navigate viral crises<br>
+        - Coordinated progressive rapid-response teams<br>
+        - Turned a far-right leadership race into a climate accountability moment<br>
+        - Designed counter-disinfo ops during elections with civil society allies</p>
+      </details>
+
+      <details class="exp-card">
+        <summary><svg class="icon"><use xlink:href="#icon-tech"/></svg> Tech for Good</summary>
+        <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-3.png" alt="Tech for Good" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        <p>The right tools in the right hands at the right time can change everything. We build, source, or adapt the tech that campaigns actually need.
+
+        <br><br><strong>Examples:</strong><br>
+        - Open-source tanker tracking system for activist journalism<br>
+        - Peer-to-peer crowdfunding for climate action<br>
+        - OSINT workflows and counter-narratives<br>
+        - Delivered Ethereum Foundation a full strategic roadmap of Web3 x climate intersections</p>
+      </details>
+
+      <details class="exp-card">
+        <summary><svg class="icon"><use xlink:href="#icon-indigenous"/></svg> Indigenous Partnership</summary>
+        <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-4.png" alt="Indigenous Collaboration" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        <p>Supporting Indigenous rights is not only strategic — it's essential. We have been honoured to work alongside First Nations to advance sovereignty, clean energy, and self-determination.
+
+        <br><br><strong>Examples:</strong><br>
+        - Facilitated Tsleil-Waututh Nation's Sacred Trust initiative<br>
+        - Supported energy transition planning with Heiltsuk and ICE<br>
+        - Produced media and advocacy across dozens of Indigenous-led campaigns</p>
+      </details>
+
+      <details class="exp-card">
+        <summary><svg class="icon"><use xlink:href="#icon-training"/></svg> Training & Organizing</summary>
+        <img src="https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/e-5.png" alt="Training & Organizing" onerror="this.src='https://raw.githubusercontent.com/M0nkeyFl0wer/elephant-room-site/main/content/images/2025/06/elephant-room-logo.png'; this.onerror=null;">
+        <p>Our trainings sharpen skills, our speeches ignite action, and our organizing strategies turn bystanders into unstoppable forces.
+
+        <br><br><strong>Examples:</strong><br>
+        - Keynotes and workshops at universities and civic summits<br>
+        - Emergency prep for the City of Jasper (later hit by wildfire)<br>
+        - Curriculum design for frontline climate organizing programs</p>
+      </details>
+    </section>
+
+    <!-- CTA Footer -->
+    <section class="cta-footer">
+      <div class="cta-box">
+        <h2>Working on Something Important?</h2>
+        <p>Feel free to reach out and book some time to explore what we could do together.</p>
+        <a class="cta-button" href="https://calendly.com/ben_west_/elephant-room-first-call" target="_blank">Start a Conversation</a>
+      </div>
+    </section>
+
+    <!-- SVG Icon Sprite Sheet -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <!-- Strategic Messaging Icon -->
+      <symbol id="icon-messaging" viewBox="0 0 24 24" fill="none" stroke="#a30069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <path d="M10 8l4 4-4 4"/>
+      </symbol>
+
+      <!-- Crisis Management Icon -->
+      <symbol id="icon-crisis" viewBox="0 0 24 24" fill="none" stroke="#a30069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </symbol>
+
+      <!-- Tech for Good Icon -->
+      <symbol id="icon-tech" viewBox="0 0 24 24" fill="none" stroke="#a30069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+        <rect x="9" y="9" width="6" height="6"/>
+        <line x1="9" y1="1" x2="9" y2="4"/>
+        <line x1="15" y1="1" x2="15" y2="4"/>
+        <line x1="9" y1="20" x2="9" y2="23"/>
+        <line x1="15" y1="20" x2="15" y2="23"/>
+        <line x1="20" y1="9" x2="23" y2="9"/>
+        <line x1="20" y1="14" x2="23" y2="14"/>
+        <line x1="1" y1="9" x2="4" y2="9"/>
+        <line x1="1" y1="14" x2="4" y2="14"/>
+      </symbol>
+
+      <!-- Indigenous Partnership Icon -->
+      <symbol id="icon-indigenous" viewBox="0 0 24 24" fill="none" stroke="#a30069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l10 6.5v7L12 22 2 15.5v-7L12 2z"/>
+        <path d="M12 22v-9.5"/>
+        <path d="M22 8.5l-10 7-10-7"/>
+        <path d="M2 15.5l10-7 10 7"/>
+        <path d="M12 2v4.5"/>
+      </symbol>
+
+      <!-- Training & Organizing Icon -->
+      <symbol id="icon-training" viewBox="0 0 24 24" fill="none" stroke="#a30069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="8.5" cy="7" r="4"/>
+        <polyline points="17 11 19 13 23 9"/>
+      </symbol>
+    </svg>
+</body>
+</html>

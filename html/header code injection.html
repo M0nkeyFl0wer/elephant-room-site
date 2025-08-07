@@ -1,0 +1,154 @@
+<style>
+  /* ✅ Hide Ghost's default footers */
+  footer.site-footer,
+  .gh-main-footer,
+  .gh-footer,
+  .gh-foot,
+  .site-footer {
+    display: none !important;
+  }
+
+  /* ✅ Hide Ghost default h1 injection and titles */
+  .gh-page-head h1,
+  .gh-content > h1:first-of-type:not(.hero-heading),
+  main h1:first-of-type:not(.hero-heading),
+  article.gh-content h1:first-of-type:not(.hero-heading),
+  .post-full-title,
+  .article-title,
+  .gh-article-title {
+    display: none !important;
+  }
+
+  /* ✅ Fix home page hero text contrast */
+  .gh-canvas .gh-content h1,
+  .gh-canvas .gh-content h2,
+  .gh-canvas .gh-content p {
+    color: white !important;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
+    font-weight: 600 !important;
+  }
+
+  /* ✅ Extra contrast for hero text elements */
+  .hero-heading,
+  .hero-blurb,
+  .hero-content h1,
+  .hero-content h2,
+  .hero-content p {
+    color: white !important;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
+    font-weight: 600 !important;
+  }
+
+  /* ✅ Eliminate white space between header and hero */
+  .gh-page-head {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .gh-content {
+    margin-top: -3rem !important;
+    padding-top: 0 !important;
+  }
+
+  /* ✅ Target Ghost's main content wrapper */
+  .gh-main,
+  .gh-page,
+  .gh-article {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* ✅ Remove default spacing from Ghost containers */
+  .gh-canvas {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* ✅ Adjust navigation spacer to be more precise */
+  .nav-spacer {
+    height: 60px !important;
+    margin-bottom: -1rem !important;
+  }
+
+  /* ✅ Pull hero sections up closer to header */
+  .full-bleed-wrapper {
+    margin-top: -4rem !important;
+  }
+
+  .sub-hero,
+  .hero-section {
+    margin-top: 0 !important;
+    padding-top: 3rem !important;
+  }
+
+  /* ✅ Ensure navigation is visible */
+  .site-nav,
+  .gh-head-menu {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  .site-nav a,
+  .gh-head-menu a {
+    color: #a30069 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 1rem !important;
+    margin-left: 1rem !important;
+    text-decoration: none !important;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.8),
+      0 2px 4px rgba(255, 255, 255, 0.6),
+      0 4px 8px rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .site-nav a:hover,
+  .gh-head-menu a:hover {
+    color: #5e2c7f !important;
+  }
+
+  /* ✅ Optional: Clean CTA layout (keep if you're using the CTA box at bottom) */
+  .cta-footer {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem 1rem 1rem;
+    margin-top: 0 !important;
+  }
+
+  .cta-box {
+    background: linear-gradient(to right, #f1e6ff, #fef2f6);
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .cta-box h2 {
+    font-size: 2rem !important;
+    font-weight: 700;
+    color: #a30069;
+    margin-bottom: 1.25rem;
+    text-transform: none;
+  }
+
+  .cta-box a.cta-button {
+    display: inline-block;
+    background: white;
+    color: #d6336c;
+    border: 2px solid #d6336c;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .cta-box a.cta-button:hover {
+    background: #fff0f5;
+    color: #a30069;
+    border-color: #a30069;
+  }
+</style>
